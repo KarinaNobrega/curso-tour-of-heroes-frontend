@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+@Component({ //DECORATOR --> dizendo que a classe é um componente e que tem algumas entradas.
+  selector: 'app-root', // usada em outros lugares. Usado no index.html
+  templateUrl: './app.component.html', // url
+  styleUrls: ['./app.component.scss'] //array, podendo adicionar outro arquivo de estilos.
 })
-export class AppComponent {
-  title = 'curso-tour-of-heroes-frontend';
+export class AppComponent { //uma vez exportado aqui, ele poderá ser importado em qualquer lugar, tal como no AppModule, declarations e em bootstrap.
+  title = 'Tour of Heroes';
 }
