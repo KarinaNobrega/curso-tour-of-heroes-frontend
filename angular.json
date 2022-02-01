@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/curso-tour-of-heroes-frontend", 
+            "outputPath": "dist/curso-tour-of-heroes-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -100,6 +100,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
@@ -124,5 +125,8 @@
         }
       }
     }},
-  "defaultProject": "curso-tour-of-heroes-frontend"
+  "defaultProject": "curso-tour-of-heroes-frontend",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
