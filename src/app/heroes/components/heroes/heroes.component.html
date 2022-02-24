@@ -1,0 +1,57 @@
+<!--component Pai, controla do component filho = hero-detail.-->
+
+<h1>My Heroes</h1>
+<!-- TROCAMOS O ul e li PELO MAT-TABLE:
+<ul class="heroes">
+
+  [class.selected]="hero === selectedHero"; (click)="onSelect(hero)" - tirado do li.
+ctrl + shift + K = apaga linha
+
+  <li
+  *ngFor="let hero of heroes"
+   routerLink="/heroes/{{ hero.id }}"
+  >
+
+  o heroes é o que criamos no heroes.component.ts, logo, irá aparecer a lista.    O *ngFor representa uma repetição.    O Let, no JS, pode ser alterado.  O  click é para criar uma seleção para cada linha.
+    <span>{{ hero.id }}</span> {{ hero.name }}
+  </li>
+</ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+-->
+<button class="add-button" color="accent" mat-fab routerLink="new">
+  <mat-icon>add</mat-icon> <!--Porém, o meu não está criando, não adiciona na lista. No db.json está incluindo os novos herois, mas no app não. -->
+</button>
+
+<app-hero-search [label]="'Hero to delete'" (selected)="onSelected($event)"></app-hero-search>
+
+<table mat-table [dataSource]="heroes" class="mat-elevation-z8"> <!--o class="mat-elevation-z8" é um efeito que da na tabela, para ficar mais visível-->
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+    <button mat-icon-button matTooltip="Delete this item"
+    (click)="delete(element); $event.stopPropagation()"> <!-- o dele é row, dentro dos parenteses, mas no mue, por ser angular 9, é element-->
+      <mat-icon>delete</mat-icon>
+    </button>
+  </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+  [routerLink]="['/heroes', row.id]"></tr>
+
+</table>

@@ -44,3 +44,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+# a pasta documentation não entrará mais no controle de versão.
+documentation/

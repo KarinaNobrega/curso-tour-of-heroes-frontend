@@ -1,8 +1,0 @@
-<h2>{{ hero.name | uppercase }} Details</h2> <!-- a | significa paiper, serve para mudar os dados de apresentação, formatar datas, colocar dados monetários, formatar string. Uppercase = colocar todas as letras da string em maiúsculo. -->
-<div><span>id: </span>{{ hero.id }}</div>
-<div><span>name: </span>{{ hero.name }}</div>
-
-<div>
-  <label for="name">Hero name: </label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name" type="text"> <!--two way data binding ( '[(ngModel)]' )= qualquer informação que mudemos no template, irá refletir no component. E, se mudar alguma informação no component, refletirá no template. --> <!--Dentro do INPUT estaremos editando o hero name (atributo da propriedade). No Details e no span name, também ocorrerá a alteração -->
-</div>

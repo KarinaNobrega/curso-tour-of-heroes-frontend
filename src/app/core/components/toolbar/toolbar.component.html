@@ -1,0 +1,32 @@
+<!--CABEÇALHO-->
+
+<mat-toolbar color="primary"> <!-- TOUR OF HEROES - No angular, todas as vezes que for pedir para exibir uma variável, definida no components, deve-se colocar {{}} duplas, ou seja, significa que posso usar informações existentes no meu component. -->
+ <span> {{ title }} </span>
+
+<span fxFlex></span>
+    <ng-container *ngIf="isLoggedIn"> <!--próprio do angular para colocar conteudo, por ex: não quero usar o div, então não se usa a div e coloca o ng-container.-->
+     <button
+    mat-icon-button
+    aria-label="menuItem.toolTipText"
+    [matTooltip]="menuItem.toolTipText"
+    *ngFor="let menuItem of menuItems"
+    [routerLink]="[menuItem.routerLink]" > <!--botão para abrir a lista de herois. -->
+
+    <mat-icon>{{ menuItem.icon }}</mat-icon> <!--icone do canto direito superior, icone do botão da lista dos heróis. -->
+     </button>
+  </ng-container >
+  <a
+    mat-button
+    matTooltip="Login into app"
+    *ngIf="!isLoggedIn"
+    routerLink="/login"> Login  </a>
+    <div *ngIf="isLoggedIn">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+
+    <mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onLogout">Logout</button>
+    </mat-menu>
+</mat-toolbar>

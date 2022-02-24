@@ -1,0 +1,7 @@
+.input-width {
+  width: 50%;
+
+  @media only screen and (max-width: 600px) { //específico para quando a tela ficar no tamanho de um celular, deste modo ele se adapta ao tamanho da página. 
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+<!--Component pai do hero-search-->
+<h1>Dashboard</h1>
+
+<!--Diretivas não coloca * na frente!!! -->
+<div fxLayout="column" fxLayoutGap="24px">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="12px" fxLayoutAlign="space-between"> <!-- row = um ao lado do outro, isto é, os nomes dos heroes vão aparecer um ao lado do outro. fxLayoutGap = distanciamento entre os elementos. fxLayoutAlign = vai distribuir os elementos na página ao aumentar as telas. -->
+    <mat-card class="pointer"
+    *ngFor="let hero of heroes"
+    [routerLink]="['/heroes', hero.id]" > <!--ngFor - repetição.-->
+  <mat-card-title>{{ hero.name }}</mat-card-title>
+</mat-card>
+</div>
+
+<app-hero-search [label]="'Hero search'" (selected)="onSelected($event)"></app-hero-search> <!--como no hero.search há um input, no component, é possível passar um parâmetro do dashboard para ele, através do comando = [label]="'...'". Label está dentro do colchete pois está passando um parametro e é uma string, por isso que a frase Hero search está dentro de aspas simples. -->
+</div>

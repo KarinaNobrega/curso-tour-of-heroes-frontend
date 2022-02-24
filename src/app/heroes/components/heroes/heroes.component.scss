@@ -1,0 +1,36 @@
+tr:hover{
+  cursor: pointer;
+  background:rgb(175, 173, 173);
+}
+
+table {
+  width: 100%;
+}
+
+.add-button{
+  position: absolute;
+  right: 14px;
+  top: 67px;
+}
+
+.mat-row:hover{
+  cursor: pointer;
+  background: white;
+}
+
+.mat-column-id {
+  max-width: 60px;
+}
+
+.mat-column-actions {
+  border-left: 1px solid rgb(155, 153, 153);
+  padding-left: 15px;
+  max-width: 60px;
+}
+
+/*
+.heroes li.selected {
+  background-color: black;
+  color: white;
+}
+*/

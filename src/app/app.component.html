@@ -1,5 +1,12 @@
 <!--COMPONENT INICIAL/PRINCIPAL-->
-<h1>{{title}}</h1> <!-- No angular, todas as vezes que for pedir para exibir uma variável, definida no components, deve-se colocar {{}} duplas, ou seja, significa que posso usar informações existentes no meu component. -->
 
-<app-heroes><!-- adicionando o app-heroes, criado no heroes.component, para ser exibido no app.component (component inicial). Logo, o h2 que foi digitado no heroes.component.html, será exibido nesta página do HTML. Ou seja, declaramos o component para ser exibido na página inicial. -->
-</app-heroes>
+<app-toolbar [isLoggedIn]="isLoggedIn$ | async"  [menuItems]="menuItems" [title]="title" (logout)="onLogout()"></app-toolbar>
+<!--passamos menuitens para a toolbar, passamos valores para lá através do input no app.component
+A toolbar está recebendo de está logado ou não e também, ao clicar no logout, vai para o app component e sairá da aplicação.-->
+
+<div class="content" fxLayoutGap="11px">
+  <!-- adicionando o app-heroes, criado no heroes.component, para ser exibido no app.component (component inicial). Logo, o h2 que foi digitado no heroes.component.html, será exibido nesta página do HTML. Ou seja, declaramos o component para ser exibido na página inicial. -->
+  <app-loading></app-loading>
+  <router-outlet></router-outlet> <!-- ONDE SERÁ ENCAIXADO O DASHBOARD - faz parte do route module, como está sendo importado e exportado, fica disponível para ser usado no template. -->
+ <app-messages *ngIf="isLoggedIn$ | async"></app-messages> <!--se o LoggedIn retornar true as mensagens irá aparecer, caso contrário, ficarão ocultas. -->
+</div>

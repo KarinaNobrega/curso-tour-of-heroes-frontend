@@ -1,0 +1,57 @@
+<!--EXIBIR DETALHES DO HEROI - componente filho-->
+
+<!-- <div *ngIf="hero"> -- o If irá ajudar a exibir quando tiver um Heroi dentro do hero. Caso não tiver selecionado, o trecho abaixo não irá aparecer.  Ou seja, só irá aparecer o Id, Name e a caixinha, quando clicarmos no nome do heroi da lista. -->
+
+  <!--  <h1>{{ hero.name | uppercase }} Details</h1> a | significa paiper, serve para mudar os dados de apresentação, formatar datas, colocar dados monetários, formatar string. Uppercase = colocar todas as letras da string em maiúsculo. -->
+  <!--NOVO CÓDIGO-->
+<h1>{{ isEditing ? "Update" : "Create" }} Hero</h1> <!-- SE ESTIVER EDITANDO, IRÁ MOSTRAR UPDATE, CASO CONTRÁRIO SERÁ MOSTRADO UM CREATE. -->
+
+<form [formGroup]="form" novalidate>
+  <mat-card>
+    <mat-card-content fxLayout="column">
+      <!--ID-->
+      <mat-form-field *ngIf="isEditing">
+        <mat-label>ID</mat-label>
+          <input matInput formControlName="id"/> <!--via template pode colocar o disabled aqui-->
+<!--tiramos o [value] e colocamos o formControlName. O VALUE DENTRO DAS [] FACILITA NA DIGITAÇÃO, NÃO SENDO NECESSÁRIO COLOCAR O hero.id DENTRO DE {{}}-->
+      </mat-form-field>
+      <!--NAME-->
+       <mat-form-field>
+       <mat-label>Hero Name</mat-label>
+         <input id="name" formControlName="name" placeholder="Name" type="text"/>
+<!--retiramos o matInput [(ngModel)]="hero.name"  para colocarmos o form-->
+         <mat-error *ngIf="form.controls['name'].hasError('required')">
+        Name is required.
+          </mat-error>
+
+          <mat-error *ngIf="form.controls['name'].hasError('minlength')">
+        Name shoud contain at least 3 characters.
+          </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button color="primary" mat-raised-button *ngIf="!isEditing" (click)="create()">Create</button>
+
+      <button color="primary" mat-raised-button *ngIf="isEditing" (click)="update()">Update</button>
+
+<!--[disabled]="!isFormValid"-->
+      <button mat-raised-button (click)="goBack()">Go back</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<!--
+  COLOCAMOS DENTRO DO MAT-CARD:
+
+  <div><span>id: </span>{{ hero.id }}</div>
+  <div><span>name: </span>{{ hero.name }}</div>
+  <div>
+    <label for="name">Hero name: </label>
+    <input id="name" [(ngModel)]="hero.name" placeholder="name" type="text"/>
+
+    two way data binding ( '[(ngModel)]' )= qualquer informação que mudemos no template, irá refletir no component. E se mudar alguma informação no component, refletirá no template.
+
+    Dentro do INPUT estaremos editando o hero name (atributo da propriedade). No Details e no span name, também ocorrerá a alteração
+  </div>
+  -->

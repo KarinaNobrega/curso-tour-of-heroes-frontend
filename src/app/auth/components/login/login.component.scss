@@ -1,0 +1,15 @@
+:host{ //o host é o component login em si - app-login.
+  display: flex;
+  justify-content: center;
+  margin: 72px 0;
+}
+
+.mat-form-field{ //caixa de digitar
+  width: 100%;
+  min-width: 400px;
+}
+
+.mat-card-title{ //login - título centralizado
+  display: flex;
+  justify-content: center;
+}

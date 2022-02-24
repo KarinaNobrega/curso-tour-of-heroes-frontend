@@ -1,0 +1,14 @@
+<mat-form-field appearance="fill" class="input-width"> <!--mostrará um fundo no tom cinza, bem clarinho-->
+  <mat-label>{{ label }}</mat-label>
+  <input [matAutocomplete]="auto" matInput placeholder="Hero name" #searchBox type="text" (input)="search(searchBox.value)"/> <!--a cada tecla digitada chamará o método search que foi criado no component, vai passar o searchbox.valeu para ele e colocar a msg no console.-->
+
+  <button mat-icon-button matSuffix *ngIf="searchBox.value" (click)="searchBox.value= ''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <!-- ao digitar no campo de busca, haverá um x para limpar. Logo, precisa de uma variavel de template, então, colocou o '#searchBox' (no input - nome você quem coloca) para referenciar todos os atributos do input pois a variavel de template está inserida nele. Feito isso, se o valor do textbox estiver alguma coisa, irá aparecer o x para limpar. -->
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected($event); searchBox.value=''"> <!--onSelected($event) o valor selecionado (hero) vai cair no onselected. -->
+    <mat-option *ngFor="let hero of heroes$ | async" [value]="hero"> {{ hero.name }}
+  </mat-option> <!--o $ no final da palavra heroes é para mostrar que é um observable-->
+
+  </mat-autocomplete>
+</mat-form-field>
